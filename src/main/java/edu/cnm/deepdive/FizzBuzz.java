@@ -3,22 +3,20 @@ package edu.cnm.deepdive;
 public class FizzBuzz {
 
   public String fizzBuzz(int position) {
+    String result = "";
     boolean isFizz = position % 3 == 0;
     boolean isBuzz = position % 5 == 0;
-    if (isFizz && isBuzz) {
-      return "FizzBuzz";
+    if (isFizz) {
+      result += "Fizz";
     }
-    if (position % 3 == 0 && position % 5 == 0) {
-      return "FizzBuzz";
-    } else if (position % 3 == 0) {
-      return "Fizz";
-    } else if (position % 5 == 0) {
-      return "Buzz";
-    } else {
-      return Integer.toString(position);
+    if (isBuzz) {
+      result += "Buzz";
     }
+    if (result.isEmpty()) {
+      result = Integer.toString(position);
+    }
+    return result;
   }
-
 
   public static void main(String[] args) {
     int max = 100;
