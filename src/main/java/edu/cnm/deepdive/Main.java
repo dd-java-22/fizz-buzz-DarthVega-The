@@ -1,9 +1,16 @@
 package edu.cnm.deepdive;
 
+import java.util.EnumSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Main {
 
+  private static final Map<Set<FizzBuzz>, String> FIZZBUZZ_MAP = Map.of(
+      EnumSet.of(FizzBuzz.FIZZ), "Fizz",
+  EnumSet.of(FizzBuzz.BUZZ), "BUZZ",
+  EnumSet.of(FizzBuzz.FIZZ, FizzBuzz.BUZZ), "FizzBuzz"
+  );
   public static void main(String[] args) {
     int max = 100;
     int parsedArg;
@@ -11,17 +18,8 @@ public class Main {
       max = parsedArg;
     }
     for (int i = 0; i < max; i++) {
-      Set<FizzBuzz> result = FizzBuzz.fizzBuzz(i + 1);
-      if (result.contains(FizzBuzz.FIZZ)){
-        System.out.print("Fizz");
-      }
-      if (result.contains(FizzBuzz.BUZZ)) {
-        System.out.print("BUZZ");
-      }
-      if (result.isEmpty()) {
-        System.out.print(i);
-      }
-      System.out.println();
+      Set<FizzBuzz> result = FizzBuzz.fizzBuzz(i);
+      System.out.println(FIZZBUZZ_MAP.getOrDefault(result,Integer.toString(i)));
     }
   }
 }
